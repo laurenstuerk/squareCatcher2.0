@@ -1,82 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            touch-action: none;
-        }
-        #gameCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-        #score {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            color: white;
-            font-size: 24px;
-            font-family: Arial;
-            z-index: 1;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Catcher</title>
 </head>
 <body>
     <div id="score">Score: 0</div>
     <canvas id="gameCanvas"></canvas>
-
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const scoreElement = document.getElementById('score');
-        let score = 0;
-        let squareX, squareY;
-        let isRed = false;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        function moveSquare() {
-            squareX = Math.random() * (canvas.width - 50);
-            squareY = Math.random() * (canvas.height - 50);
-        }
-
-        function drawScene() {
-            ctx.fillStyle = isRed ? 'red' : 'black';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'white';
-            ctx.fillRect(squareX, squareY, 50, 50);
-        }
-
-        function handleTouch(e) {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const x = touch.clientX;
-            const y = touch.clientY;
-
-            if (x >= squareX && x <= squareX + 50 && 
-                y >= squareY && y <= squareY + 50) {
-                isRed = false;
-                score++;
-                scoreElement.textContent = `Score: ${score}`;
-                moveSquare();
-            } else {
-                isRed = true;
-            }
-            drawScene();
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        canvas.addEventListener('touchstart', handleTouch);
-        
-        resizeCanvas();
-        moveSquare();
-        drawScene();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

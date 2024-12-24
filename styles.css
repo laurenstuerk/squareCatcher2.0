@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    touch-action: none;
+}
+#gameCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#score {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 24px;
+    font-family: Arial;
+    z-index: 1;
+}
